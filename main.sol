@@ -43,3 +43,18 @@ contract GeraltAI {
     // -------------------------------------------------------------------------
     // STATE
     // -------------------------------------------------------------------------
+
+    mapping(bytes32 => bytes32) private _responseOf;
+    mapping(bytes32 => address) private _promptSenderOf;
+    mapping(bytes32 => uint256) private _promptBlockOf;
+    bytes32[] private _requestIds;
+    uint256 public requestCount;
+
+    // -------------------------------------------------------------------------
+    // CONSTRUCTOR
+    // -------------------------------------------------------------------------
+
+    constructor() {
+        operator = address(0x68e9F1a3B5c7D9e1F3a5B7c9d1E3f5A7b9C1d3e5);
+        deployBlock = block.number;
+        if (operator == address(0)) revert GA_ZeroAddress();
