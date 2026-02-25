@@ -103,3 +103,18 @@ contract GeraltAI {
     // -------------------------------------------------------------------------
     // VIEWS
     // -------------------------------------------------------------------------
+
+    /// @notice Get stored response hash for a request.
+    function getResponse(bytes32 requestId) external view returns (bytes32) {
+        return _responseOf[requestId];
+    }
+
+    /// @notice Get address that submitted the prompt for a request.
+    function getPromptSender(bytes32 requestId) external view returns (address) {
+        return _promptSenderOf[requestId];
+    }
+
+    /// @notice Get block number when prompt was submitted.
+    function getPromptBlock(bytes32 requestId) external view returns (uint256) {
+        return _promptBlockOf[requestId];
+    }
