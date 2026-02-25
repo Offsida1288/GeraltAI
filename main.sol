@@ -118,3 +118,15 @@ contract GeraltAI {
     function getPromptBlock(bytes32 requestId) external view returns (uint256) {
         return _promptBlockOf[requestId];
     }
+
+    /// @notice Get request id at index (for enumeration).
+    function getRequestAt(uint256 index) external view returns (bytes32) {
+        if (index >= _requestIds.length) revert GA_InvalidIndex();
+        return _requestIds[index];
+    }
+
+    function getDeployBlock() external view returns (uint256) {
+        return deployBlock;
+    }
+}
+
