@@ -88,3 +88,18 @@ contract GeraltAI {
     }
 
     // -------------------------------------------------------------------------
+    // OPERATOR: SET RESPONSE
+    // -------------------------------------------------------------------------
+
+    /// @notice Set the response commitment for a request. Only operator (e.g. backend chatbot).
+    function setResponse(bytes32 requestId, bytes32 responseHash) external onlyOperator {
+        if (requestId == bytes32(0)) revert GA_ZeroRequestId();
+        if (_responseOf[requestId] != bytes32(0)) revert GA_ResponseAlreadySet();
+
+        _responseOf[requestId] = responseHash;
+        emit ResponseSet(requestId, responseHash, block.number);
+    }
+
+    // -------------------------------------------------------------------------
+    // VIEWS
+    // -------------------------------------------------------------------------
