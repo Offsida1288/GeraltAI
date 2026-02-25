@@ -13,3 +13,18 @@ contract GeraltAI {
 
     event PromptSubmitted(address indexed user, bytes32 requestId, bytes32 promptHash, uint256 atBlock);
     event ResponseSet(bytes32 indexed requestId, bytes32 responseHash, uint256 atBlock);
+
+    // -------------------------------------------------------------------------
+    // ERRORS
+    // -------------------------------------------------------------------------
+
+    error GA_ZeroRequestId();
+    error GA_NotOperator();
+    error GA_ResponseAlreadySet();
+    error GA_RequestAlreadySubmitted();
+    error GA_MaxRequestsReached();
+    error GA_InvalidIndex();
+    error GA_ZeroAddress();
+
+    // -------------------------------------------------------------------------
+    // CONSTANTS
