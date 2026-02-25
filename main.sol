@@ -58,3 +58,18 @@ contract GeraltAI {
         operator = address(0x68e9F1a3B5c7D9e1F3a5B7c9d1E3f5A7b9C1d3e5);
         deployBlock = block.number;
         if (operator == address(0)) revert GA_ZeroAddress();
+    }
+
+    // -------------------------------------------------------------------------
+    // MODIFIERS
+    // -------------------------------------------------------------------------
+
+    modifier onlyOperator() {
+        if (msg.sender != operator) revert GA_NotOperator();
+        _;
+    }
+
+    // -------------------------------------------------------------------------
+    // PUBLIC: SUBMIT PROMPT (REQUEST)
+    // -------------------------------------------------------------------------
+
